@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header::commonHeader">
+</head>
+<script th:replace="common/navi::commonInitJs">
+
+</script>
+
+<body class="layui-bg-gray">
+    <div th:replace="common/navi::commonNavi"></div>
+    <div th:replace="generate :: generate"></div>
+   <!-- <div th:if="${param.page} == null" th:remove="tag">
+        啦啦啦啦啦
+    </div>
+    <div th:if="${param.page} != null" th:remove="tag">
+        <div th:replace="${param.page} :: ${param.page}"></div>
+    </div>-->
+</body>
+<script>
+</script>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div class="layui-body" style="padding-top: 70px;position: fixed;overflow-y: scroll;" th:fragment="generate">
+        <div class="layui-card layui-panel">
+            <div class="layui-card-header "
+                style="display:flex;flex-direction:row;align-items:center;padding: 5px;position: relative;top: 0px;left: 0px;">
+                <i class="layui-icon layui-icon-cols"
+                    style="position: relative;top: 0px;left: 0px; font-size: 30px; color: #1E9FFF;padding-right: 5px;">
+                </i>
+                <h3>基本信息</h3>
+            </div>
+            <div class="layui-card-body">
+                <div class="layui-form">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-xs10">
+                            <div class="layui-input-group ">
+                                <div class="layui-input-prefix">项目名称</div>
+                                <input type="text" id="projectName" value="demo" autocomplete="off"
+                                    class="layui-input only_bottom" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-xs10">
+                            <div class="layui-input-group ">
+                                <div class="layui-input-prefix">项目描述</div>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="description" value="this is a demo" autocomplete="off"
+                                        class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-xs10">
+                            <div class="layui-input-group ">
+                                <div class="layui-input-prefix">基础包名</div>
+                                <input type="text" id="packageName" value="com.xiaoyu.demo" autocomplete="off"
+                                    class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="layui-card layui-panel">
+            <div class="layui-card-header "
+                style="display:flex;flex-direction:row;align-items:center;padding: 5px;position: relative;top: 0px;left: 0px;">
+                <i class="layui-icon layui-icon-transfer"
+                    style="position: relative;top: 0px;left: 0px; font-size: 30px; color: #1E9FFF;padding-right: 5px;">
+                </i>
+                <h3>配置信息</h3>
+            </div>
+            <div class="layui-card-body">
+                <div class="layui-form">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-xs10">
+                            <div class="layui-input-group ">
+                                <input type="radio" name="structName" value="mvc" title="多模块" checked>
+                                <input type="radio" name="structName" value="single" title="单模块">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-xs10">
+                            <div class="layui-input-group ">
+                                <div class="layui-input-prefix">GroupId</div>
+                                <input type="text" id="groupId" value="com.xiaoyu" autocomplete="off"
+                                    class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-xs10">
+                            <div class="layui-input-group ">
+                                <div class="layui-input-prefix">ArtifactId</div>
+                                <input type="text" id="artifactId" value="demo" autocomplete="off"
+                                    class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card layui-panel">
+            <div class="layui-card-header "
+                style="display:flex;flex-direction:row;align-items:center;padding: 5px;position: relative;top: 0px;left: 0px;">
+                <i class="layui-icon layui-icon-transfer"
+                    style="position: relative;top: 0px;left: 0px; font-size: 30px; color: #1E9FFF;padding-right: 5px;">
+                </i>
+                <h3>依赖信息</h3>
+            </div>
+            <div class="layui-card-body">
+                <div class="layui-collapse" lay-filter="dependencyPanel" id="dependencyCollapse">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card layui-panel">
+            <div class="layui-card-body">
+                <div class="layui-btn-container">
+                    <button type=" button" class="layui-btn layui-btn-normal" id="generateProject">获取代码</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            document
+                .write("<script type='text/javascript' src='../initializr/js/generate.js?v="
+                    + new Date().getDate() + "'><\/script>");
+        </script>
+        <style>
+            .layadmin-contact-box {
+                padding: 20px;
+                background-color: #fff;
+                border: 1px solid #e7eaec;
+                overflow: hidden;
+            }
+
+            /* 1. 鼠标悬停效果 */
+            .layadmin-contact-box:hover {
+                border: 2px solid rgb(128, 128, 128);
+                opacity: 0.7;
+            }
+
+            .layui-input {
+                display: block;
+                width: 100%;
+                padding-left: 10px;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-bottom: 2px solid rgb(192, 192, 192);
+            }
+        </style>
+    </div>
+    <br>
+</body>
+
+</html>

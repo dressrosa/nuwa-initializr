@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="layui-layout layui-layout-admin" th:fragment="commonNavi">
+    <div class="layui-header">
+        <div class="layui-logo" style="transition:width 0.3s;"><span>开发脚手架</span></div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <!-- <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item layadmin-flexible" lay-unselect="" id="LAY_app_flexible">
+                <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                    <i class="layui-icon layui-icon-shrink-right"></i>
+                </a>
+            </li>
+
+            <li class="layui-nav-item">
+                <a href="javascript:;">nav groups</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">menu 11</a></dd>
+                    <dd><a href="javascript:;">menu 22</a></dd>
+                    <dd><a href="javascript:;">menu 33</a></dd>
+                </dl>
+            </li>
+        </ul>-->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item layui-show-sm-inline-block">
+                <label id="loginUserLabel">
+                    Hello.Guy
+                </label>
+            </li>
+            <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-more-vertical"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side " style="transition:width 0.3s;">
+        <div class="layui-side-scroll">
+            <!--    左侧导航区域（可配合layui已有的垂直导航）  -->
+          <!--     <ul class="layui-nav layui-nav-tree" style="transition:width 0.3s;">
+                <li class="layui-nav-item layui-nav-itemed" title=" 脚手架"><a class="" href="main?page=generate"
+                        lay-direction="2"><i class="layui-icon layui-icon-senior" title=" 添加"> 添加</i></a>
+                    Ï
+                </li>
+                <li class="layui-nav-item layui-nav-itemed" title=" 哈哈"><a class="" href="javascript:;"
+                        lay-direction="2"><i class="layui-icon layui-icon-set" title=" 哈哈"> 哈哈</i></a>
+                    <dl class="layui-nav-child">
+
+                    </dl>
+                </li>
+            </ul>-->
+        </div>
+    </div>
+</div>
+<script th:fragment="commonInitJs">
+    layui.use(['element', 'layer', 'util'], function () {
+        var element = layui.element;
+        var layer = layui.layer;
+        var util = layui.util;
+        var $ = layui.$;
+
+        function jump(page) {
+            return "main?page=" + page;
+        }
+
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="commonHeader">
+    <title>Start Initializr</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.8.11/css/layui.min.css"
+        integrity="sha512-R4DHSwa2v91B8APIaaXAj6Tklll+7JVFSL//JcBDGPg6jf51+hCdPNLrGeK4JoYPsZuBh76iotf96mImZJx2/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.8.11/layui.min.js"
+        integrity="sha512-OG/jz9oAv0HfKidTFS82fdAzysEVtgVMsIgYXOU0VMdMUww7bz20itiU4M/kiQUvCLX8VD2Nn7cnBVXLJ9pQtg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        document
+            .write("<script type='text/javascript' src='../initializr/js/sso.js?v="
+                + new Date().getDay() + "'><\/script>");
+    </script>
+</head>
+
+</html>

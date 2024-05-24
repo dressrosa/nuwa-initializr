@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyu.initializr.dao.TemplateDao">
+
+    <resultMap id="BaseResultMap" type="Template">
+        <result column="id" property="id" />
+        <result column="relative_id" property="relativeId" />
+        <result column="name" property="name" />
+        <result column="language" property="language" />
+        <result column="gen_option" property="genOption" />
+        <result column="path" property="path" />
+        <result column="params" property="params" />
+        <result column="struct_type" property="structType" />
+        <result column="pack_name" property="packName" />
+        <result column="content" property="content" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        relative_id,
+        name,
+        language,
+        path,
+        pack_name,
+        params,
+        struct_type,
+        gen_option,
+        content,
+        create_time,
+        update_time
+    </sql>
+
+
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM template
+        where id = #{id}
+        limit 1
+    </select>
+
+    <select id="queryByStructType" resultMap="BaseResultMap">
+        SELECT
+        id,
+        relative_id,
+        name,
+        language,
+        path,
+        pack_name,
+        params,
+        struct_type,
+        gen_option
+        FROM template
+        where
+        gen_option=1 and struct_type=#{structType}
+    </select>
+
+    <select id="queryByPackName" resultMap="BaseResultMap">
+        SELECT
+        id,
+        relative_id,
+        name,
+        language,
+        path,
+        pack_name,
+        params,
+        struct_type,
+        gen_option
+        FROM template
+        where
+        pack_name = #{packName} and struct_type=#{structType}
+    </select>
+
+
+    <insert id="insert" useGeneratedKeys="true">
+        INSERT INTO template
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="null != name and '' != name">
+                name,
+            </if>
+            <if test="null != path and '' != path">
+                path,
+            </if>
+            <if test="null != location and '' != location">
+                location,
+            </if>
+            <if test="null != packName and '' != packName">
+                pack_name,
+            </if>
+            <if test="null != content and '' != content">
+                content,
+            </if>
+            <if test="null != createTime and '' != createTime">
+                create_time,
+            </if>
+            <if test="null != updateTime and '' != updateTime">
+                update_time
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="null != name and '' != name">
+                #{name},
+            </if>
+            <if test="null != path and '' != path">
+                #{path},
+            </if>
+            <if test="null != location and '' != location">
+                #{location},
+            </if>
+            <if test="null != packName and '' != packName">
+                #{packName},
+            </if>
+            <if test="null != content and '' != content">
+                #{content},
+            </if>
+            <if test="null != createTime and '' != createTime">
+                #{createTime},
+            </if>
+            <if test="null != updateTime and '' != updateTime">
+                #{updateTime}
+            </if>
+        </trim>
+    </insert>
+
+
+
+
+</mapper>

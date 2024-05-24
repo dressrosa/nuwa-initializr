@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- env: prod -->
+    <property name="LOG_HOME" value="/data/logs/initializr" />
+    <!-- 从高到地低 OFF 、 FATAL 、 ERROR 、 WARN 、 INFO 、 DEBUG 、 TRACE 、 ALL -->
+    <!-- 日志输出规则 根据当前ROOT 级别，日志输出时，级别高于root默认的级别时 会输出 -->
+    <!--开发环境 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder charset="UTF-8">
+            <pattern>[%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][%logger{1.}:%L]%X{pspanid}%X{spanid}%X{traceid}%m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DETAIL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/detail.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/detail-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][%logger{1.}:%L]%X{pspanid}%X{spanid}%X{traceid}%m%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/error-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][%logger{1.}:%L]%X{pspanid}%X{spanid}%X{traceid}%m%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/warn.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/warn-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][%logger{1.}:%L]%X{pspanid}%X{spanid}%X{traceid}%m%n</pattern>
+        </layout>
+    </appender>
+
+    <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+    <logger name="org.springframework" level="WARN" />
+    <logger name="org.springframework.scheduling" level="INFO" />
+    <logger name="org.springframework.boot.context.embedded.tomcat" level="INFO" />
+    <logger name="org.apache.http" level="WARN" />
+    <logger name="com.zaxxer.hikari" level="ERROR" />
+    <logger name="org.apache.ibatis" level="INFO" />
+    <logger name="org.mybatis.spring.SqlSessionUtils" level="WARN" />
+    <logger name="org.mybatis.spring.transaction" level="WARN" />
+    <logger name="net.sf" level="WARN" />
+    <logger name="io.netty" level="WARN" />
+    <logger name="org.hibernate.validator" level="WARN" />
+    <logger name="org.apache.hc" level="WARN" />
+    <logger name="com.xxl.job.core.thread" level="INFO" />
+    <logger name="org.hibernate" level="INFO" />
+    <logger name="org.thymeleaf" level="ERROR" />
+
+    <!-- 指定包下的log级别 additivity设置不向上传递 -->
+    <logger name="com.xiaoyu.initializr.dao" level="ERROR" />
+    <!-- 默认级别和输出 -->
+    <root>
+        <appender-ref ref="DETAIL" />
+        <appender-ref ref="ERROR" />
+        <appender-ref ref="WARN" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

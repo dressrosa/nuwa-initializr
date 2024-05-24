@@ -1,0 +1,36 @@
+env: local
+#server
+server:
+  port: 8080
+  servlet:
+    context-path: /initializr
+  tomcat.uri-encoding: UTF-8
+
+#database
+spring:
+  profiles:
+    active: local
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    maximumPoolSize: 50
+    minimumIdle: 2
+    driverClassName: com.mysql.jdbc.Driver
+    sourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+    url: jdbc:mysql://localhost:3306/initializr?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 
+  thymeleaf:
+    cache: false
+
+logging:
+  config: classpath:config/${env}/log.xml
+
+nuwa:
+  request:
+    excludes:
+    - /js/**
+  log:
+    filters: 
+    - /page/**
+    - /api/v1/generate
+    - /js/**
